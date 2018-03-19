@@ -7,7 +7,7 @@ addons:
             - libssl-dev
 cache: cargo
 rust:
-  - nightly
+  - stable
 matrix:
   allow_failures:
     - rust: nightly
