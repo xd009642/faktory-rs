@@ -8,11 +8,8 @@ addons:
 cache: cargo
 rust:
   - stable
-matrix:
-  allow_failures:
-    - rust: nightly
 script:
-  - cargo build --verbose
+  - cargo build 
 after_success: |
   if [[ "$TRAVIS_RUST_VERSION" == stable ]]; then
     cargo install cargo-tarpaulin --git https://github.com/xd009642/tarpaulin --branch issue_63 
