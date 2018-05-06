@@ -15,6 +15,9 @@ script:
   - cargo build 
   - cargo test
 after_success: |
-    cargo install cargo-tarpaulin --git https://github.com/xd009642/tarpaulin --branch syn_patch 
-    cargo tarpaulin --ciserver travis-ci --coveralls $TRAVIS_JOB_ID --skip-clean --no-count --verbose 
-  
+    faktory_path=$PWD
+    cd
+    git clone https://github.com/xd009642/tarpaulin 
+    cd tarpaulin 
+    git checkout syn_patch
+    cargo run -- tarpaulin -r $faktory_path --no-count --skip-clean --verbose --ciserver travis-ci --coveralls $TRAVIS_JOB_ID
