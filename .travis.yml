@@ -7,19 +7,14 @@ addons:
             - libssl-dev
 cache: cargo
 rust:
-  - nightly
-matrix:
-  allow_failures:
-    - rust: nightly
+- stable
+- nightly-2018-05-11
+- nightly-2018-05-10
+- nightly-2018-05-06
+- nightly-2018-05-05
+- nightly-2018-05-04
+- nightly-2018-05-03
+- nightly-2018-04-16
 script:
-  - cargo build 
-  - cargo test
-after_success: |
-    faktory_path=$PWD
-    cd
-    git clone https://github.com/xd009642/tarpaulin 
-    cd tarpaulin 
-    git checkout syn_patch 
-    cargo install
-    cd $faktory_path && ls 
-    cargo tarpaulin --no-count --skip-clean --verbose --ciserver travis-ci --coveralls $TRAVIS_JOB_ID
+  - RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin --git https://github.com/xd009642/tarpaulin --branch develop
+  - cargo tarpaulin --no-count --skip-clean --verbose
