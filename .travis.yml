@@ -9,10 +9,6 @@ cache: cargo
 rust:
 - stable
 - nightly-2018-05-11
-- nightly-2018-05-10
-- nightly-2018-05-06
-- nightly-2018-05-05
-- nightly-2018-05-04
 - nightly-2018-05-03
 - nightly-2018-04-16
 script:
