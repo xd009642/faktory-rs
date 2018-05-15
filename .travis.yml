@@ -7,10 +7,7 @@ addons:
             - libssl-dev
 cache: cargo
 rust:
-- stable
-- nightly-2018-05-11
-- nightly-2018-05-03
-- nightly-2018-04-16
+- nightly
 script:
-  - RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin --force --git https://github.com/xd009642/tarpaulin --branch develop
-  - cargo tarpaulin --no-count --skip-clean --verbose
+  - RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin --force --git https://github.com/xd009642/tarpaulin --branch issue_109
+  - cargo tarpaulin --ciserver travis-ci --coveralls $TRAVIS_JOB_ID --skip-clean --no-count --verbose 
