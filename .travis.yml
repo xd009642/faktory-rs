@@ -9,5 +9,5 @@ cache: cargo
 rust:
 - nightly
 script:
-  - RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin --force ---git https://github.com/xd009642/tarpaulin --branch analysis_tweaks
+  - RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin 
   - cargo tarpaulin --ciserver travis-ci --coveralls $TRAVIS_JOB_ID --skip-clean --verbose 
